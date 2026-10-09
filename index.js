@@ -20,10 +20,10 @@ io.on("connection", (socket) => {
     console.log("User disconnected:", socket.id);
   });
   socket.on("typing...", () => {
-    socket.broadcast.emit("typing...","Someone");
+    socket.broadcast.emit("typing...", "Someone");
     // io.emit("typing...", "Someone");
-});
-socket.on("stop-typing", () => {
+  });
+  socket.on("stop-typing", () => {
     socket.broadcast.emit("stop-typing");
     // io.emit("stop-typing", "Someone");
   });
@@ -32,6 +32,6 @@ socket.on("stop-typing", () => {
 // server frontend files
 app.use(express.static(path.join(__dirname, "public")));
 
-server.listen(3000, () => {
+server.listen(3000, "0.0.0.0", () => {
   console.log("Server running at http://localhost:3000");
 });
